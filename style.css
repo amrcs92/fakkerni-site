@@ -1,0 +1,59 @@
+:root {
+  --bg: #f7f5ff;
+  --surface: #ffffff;
+  --ink: #1e1b4b;
+  --ink2: #4a4770;
+  --line: #e4e1f5;
+  --accent: #1e1b4b;
+  --mint: #5ed3b4;
+  --marigold: #ffb627;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d0c1f;
+    --surface: #18172f;
+    --ink: #f7f5ff;
+    --ink2: #c9c6ea;
+    --line: #2e2a5e;
+    --accent: #b9b4ff;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Alexandria', 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.7;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.logo { height: 56px; width: auto; }
+.logo-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  .logo-light { display: none; }
+  .logo-dark { display: inline; }
+}
+nav a { color: var(--ink2); text-decoration: none; margin-inline-start: 16px; font-weight: 500; }
+nav a:hover { color: var(--ink); }
+h1 { font-size: clamp(28px, 6vw, 42px); line-height: 1.25; margin: 40px 0 8px; }
+h2 { font-size: 22px; margin: 36px 0 8px; }
+h3 { font-size: 17px; margin: 24px 0 4px; }
+p, li { color: var(--ink2); }
+.lead { font-size: 18px; max-width: 640px; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line); color: var(--ink2); font-size: 14px;
+}
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 16px 18px; }
+.card h3 { margin-top: 0; }
+.shots { display: flex; gap: 12px; overflow-x: auto; padding: 8px 0; }
+.shots img { width: 200px; border-radius: 22px; border: 1px solid var(--line); flex-shrink: 0; }
+.lang { border-top: 1px solid var(--line); margin-top: 48px; padding-top: 8px; }
+footer { margin-top: 56px; border-top: 1px solid var(--line); padding-top: 16px; font-size: 14px; color: var(--ink2); }
+footer a, .policy a { color: var(--accent); }
+.policy h2 { border-top: 1px solid var(--line); padding-top: 20px; }
+[dir='rtl'] nav a { margin-inline-start: 16px; }
