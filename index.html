@@ -1,49 +1,147 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fakkerni · فكّرني</title>
-  <meta name="description" content="Fakkerni is a bilingual (Arabic and English) alarm, reminder and medication app for Android. Everything stays on your phone.">
+  <title>Fakkerni · Alarms, reminders and medication for Android</title>
+  <meta name="description" content="Fakkerni is a free Arabic and English alarm, reminder and medication app for Android. No account, no ads, no tracking.">
+  <meta property="og:title" content="Fakkerni · Alarms, reminders and medication for Android">
+  <meta property="og:description" content="Fakkerni is a free Arabic and English alarm, reminder and medication app for Android. No account, no ads, no tracking.">
+  <meta property="og:image" content="https://amrcs92.github.io/fakkerni-site/assets/icon.png">
   <link rel="icon" href="assets/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <a href="./"><img class="logo logo-light" src="assets/logo-en-light.png" alt="Fakkerni"><img class="logo logo-dark" src="assets/logo-en-dark.png" alt="Fakkerni"></a>
-      <nav><a href="ar/">العربية</a><a href="privacy.html">Privacy policy</a></nav>
-    </header>
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="./"><img class="logo-light" src="assets/logo-en-light.png" alt="Fakkerni · فكّرني"><img class="logo-dark" src="assets/logo-en-dark.png" alt="Fakkerni · فكّرني"></a>
+      <nav class="links" aria-label="Sections"><a href="#features">Features</a><a href="#screenshots">Screenshots</a><a href="#install">Install</a><a href="#privacy">Privacy</a></nav>
+      <a class="lang-switch" href="ar/" hreflang="ar">العربية</a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/amrcs92/fakkerni-site/releases/latest/download/fakkerni.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download</a>
+    </div>
+  </header>
 
-    <main>
-      <h1>Everything that matters, on time</h1>
-      <p class="lead">Fakkerni (فكّرني, “remind me”) is an alarm, reminder and medication app for Android, made Arabic first with full English. Reminders ring on time, even offline and right after a restart.</p>
-      <span class="badge">Android 8.0+ · Free · No account · No ads</span>
-
-      <div class="grid">
-        <div class="card"><h3>Reminders that ring</h3><p>Full-screen alarms over the lock screen, flexible repeats (hourly, daily, weekly, monthly, yearly), snooze and early warnings, with the title spoken aloud in Arabic or English.</p></div>
-        <div class="card"><h3>Medication</h3><p>Doses with their own alarm screen: taken, later or skipped with a reason. Stock tracking, refill alerts and a monthly history.</p></div>
-        <div class="card"><h3>Private by design</h3><p>No account, no servers, no analytics. Your reminders and medicines stay on your phone.</p></div>
-        <div class="card"><h3>Your backups, your place</h3><p>Back up to a folder on your phone or to a “Fakkerni backups” folder in your own Google Drive, optionally encrypted with a password.</p></div>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div>
+          <span class="eyebrow"><span class="dot"></span>Free for Android · In testing</span>
+          <h1>Everything that matters, on time</h1>
+          <p class="lead">Fakkerni (<bdi>فكّرني</bdi>, “remind me”) rings your reminders and medicine doses on time, even offline and right after a restart. Made Arabic first, with full English.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="https://github.com/amrcs92/fakkerni-site/releases/latest/download/fakkerni.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download for Android</a>
+            <a class="btn btn-ghost" href="#screenshots">See screenshots</a>
+          </div>
+          <p class="meta">Android 8.0 or later · Free · About 60 MB</p>
+        </div>
+        <div class="phones" aria-hidden="true">
+          <div class="phone back"><img src="assets/shots/en-dark-medication.png" alt=""></div>
+          <div class="phone front"><img src="assets/shots/en-light-home.png" alt=""></div>
+        </div>
       </div>
+    </section>
 
-      <h2>Screenshots</h2>
-      <div class="shots">
-        <img src="assets/en-light-home.png" alt="Reminders, English, light">
-        <img src="assets/ar-light-home.png" alt="Reminders, Arabic, light">
-        <img src="assets/ar-dark-medication.png" alt="Medication, Arabic, dark">
-        <img src="assets/en-dark-backup.png" alt="Backup, English, dark">
+    <div class="trust"><div class="container"><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>No account</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>No ads</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>No tracking</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Works offline</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Arabic and English</li></ul></div></div>
+
+    <section class="block" id="features">
+      <div class="container">
+        <div class="section-head"><h2>Built to ring, every time</h2><p>Reminders and medicines on alarms that keep working when the app is closed, the phone is asleep, or it has just restarted.</p></div>
+        <div class="features"><div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></div><h3>Alarms that ring</h3><p>Full-screen alarms over the lock screen, snooze, early warnings and repeats from every few hours to every year.</p></div><div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19.5 6.3 16A7.5 7.5 0 1 1 9 18.6z"/><path d="M9.5 10.5v2M12 9v5M14.5 10.5v2"/></svg></div><h3>Hear the title</h3><p>The reminder is spoken aloud in its own language, Arabic or English, once or every few seconds.</p></div><div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8.5" width="17" height="7" rx="3.5" transform="rotate(-45 12 12)"/><path d="m9.2 9.2 5.6 5.6"/></svg></div><h3>Medication made simple</h3><p>Each dose has its own alarm: taken, later or skipped. Stock tracking, refill alerts and a monthly history.</p></div><div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18.5h10.5a4 4 0 0 0 .5-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 18.5z"/><path d="m9.5 14 2 2 3.5-3.5"/></svg></div><h3>Backups in your Drive</h3><p>Back up to a “Fakkerni backups” folder in your own Google Drive or a folder on your phone, with optional password encryption.</p></div><div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v8"/><path d="M6.3 7.3a8 8 0 1 0 11.4 0"/></svg></div><h3>Reliable after a restart</h3><p>Alarms ring even after the phone restarts, before you unlock it, and Fakkerni warns you if a battery saver holds it back.</p></div><div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></div><h3>Arabic first</h3><p>Right-to-left layout, Arabic digits and plurals, Saturday-first weeks, light and dark themes.</p></div></div>
       </div>
+    </section>
 
-      <h2>Availability</h2>
-      <p>Fakkerni is in testing and is not yet on Google Play. Read how the app handles your data in the <a href="privacy.html">privacy policy</a>.</p>
-    </main>
+    <section class="block" id="screenshots" style="background: var(--bg2)">
+      <div class="container">
+        <div class="section-head"><h2>A closer look</h2><p>Five main screens, in light and dark.</p></div>
+        <div class="gallery-bar"><div class="seg" role="group">
+          <button type="button" data-theme="light" aria-pressed="true">Light</button>
+          <button type="button" data-theme="dark" aria-pressed="false">Dark</button>
+        </div></div>
+        <div class="gallery"><figure><div class="phone"><img loading="lazy" src="assets/shots/en-light-home.png" data-light="assets/shots/en-light-home.png" data-dark="assets/shots/en-dark-home.png" alt="Reminders"></div><figcaption>Reminders</figcaption></figure><figure><div class="phone"><img loading="lazy" src="assets/shots/en-light-edit.png" data-light="assets/shots/en-light-edit.png" data-dark="assets/shots/en-dark-edit.png" alt="Edit reminder"></div><figcaption>Edit reminder</figcaption></figure><figure><div class="phone"><img loading="lazy" src="assets/shots/en-light-medication.png" data-light="assets/shots/en-light-medication.png" data-dark="assets/shots/en-dark-medication.png" alt="Medication"></div><figcaption>Medication</figcaption></figure><figure><div class="phone"><img loading="lazy" src="assets/shots/en-light-settings.png" data-light="assets/shots/en-light-settings.png" data-dark="assets/shots/en-dark-settings.png" alt="Settings"></div><figcaption>Settings</figcaption></figure><figure><div class="phone"><img loading="lazy" src="assets/shots/en-light-backup.png" data-light="assets/shots/en-light-backup.png" data-dark="assets/shots/en-dark-backup.png" alt="Backup"></div><figcaption>Backup</figcaption></figure></div>
+      </div>
+    </section>
 
-    <footer>
-      <p>Fakkerni — <a href="privacy.html">Privacy policy</a> — Contact: <a href="mailto:amrcs1992@gmail.com">amrcs1992@gmail.com</a></p>
-    </footer>
-  </div>
+    <section class="block" id="install">
+      <div class="container">
+        <div class="section-head"><h2>Install in a minute</h2><p>Fakkerni isn't on Google Play yet. Download the APK and install it directly.</p></div>
+        <div class="install">
+          <div class="download-card">
+            <h3>Fakkerni for Android</h3>
+            <p>The latest version, ready to install.</p>
+            <a class="btn btn-primary" href="https://github.com/amrcs92/fakkerni-site/releases/latest/download/fakkerni.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download for Android</a>
+            <dl class="facts">
+              <div><dt>Version</dt><dd id="rel-version">Latest</dd></div>
+              <div><dt>Size</dt><dd id="rel-size">~60 MB</dd></div>
+              <div><dt>Requires</dt><dd>Android 8.0+</dd></div>
+            </dl>
+            <p class="checksum" id="rel-sha-wrap" hidden>SHA-256: <code id="rel-sha"></code></p>
+          </div>
+          <div>
+            <ol class="steps"><li><h4>Download the APK</h4><p>Tap Download on your Android phone. The file is called fakkerni.apk.</p></li><li><h4>Allow the install</h4><p>Open the file. If Android asks, allow installing apps from your browser or file manager.</p></li><li><h4>Open Fakkerni</h4><p>Follow the short setup: language, notifications and alarm permissions. Already have a backup? Choose “I have a backup, restore”.</p></li></ol>
+            <p class="note">Google Play Protect may warn that the app comes from an unknown developer. That's because Fakkerni isn't on Google Play yet. Tap “More details” › “Install anyway”.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="privacy">
+      <div class="container">
+        <div class="privacy-band">
+          <div>
+            <h2>Private by design</h2>
+            <p>Your reminders and medicines are personal. Fakkerni keeps them on your phone, and a backup goes only where you choose.</p>
+            <a class="btn btn-ghost" href="privacy.html">Read the privacy policy</a>
+          </div>
+          <ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>No account and no sign-up</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>No servers, analytics or ads</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Data stays on your phone</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Optional backups to your own Google Drive or a folder, encrypted if you like</span></li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top: 0">
+      <div class="container">
+        <div class="section-head"><h2>Questions</h2></div>
+        <div class="faq"><details><summary>Is Fakkerni free?</summary><p>Yes. No ads, no subscriptions and no in-app purchases.</p></details><details><summary>Does it work without internet?</summary><p>Yes. Alarms, reminders and medication work fully offline. Internet is only used if you back up to Google Drive.</p></details><details><summary>Where are my backups?</summary><p>Wherever you choose: a “Fakkerni backups” folder in your own Google Drive, a folder on your phone, or inside the app. You can encrypt them with a password.</p></details><details><summary>Why isn't it on Google Play?</summary><p>Fakkerni is still being tested. It will come to Google Play later; until then you can install the APK from this page.</p></details><details><summary>Which phones are supported?</summary><p>Android 8.0 or later. Some brands limit apps in the background; Fakkerni's setup shows how to keep alarms on time on your phone.</p></details></div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <a href="./"><img class="logo-light" src="assets/logo-en-light.png" alt="Fakkerni · فكّرني"><img class="logo-dark" src="assets/logo-en-dark.png" alt="Fakkerni · فكّرني"></a>
+      <nav>
+        <a href="privacy.html">Privacy policy</a>
+        <a href="mailto:amrcs1992@gmail.com">Contact: amrcs1992@gmail.com</a>
+        <a href="https://github.com/amrcs92/fakkerni-site/releases/latest/download/fakkerni.apk">Download</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Screenshot theme switch.
+    document.querySelectorAll('.seg button').forEach((b) =>
+      b.addEventListener('click', () => {
+        document.querySelectorAll('.seg button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        document.querySelectorAll('.gallery img').forEach((img) => (img.src = img.dataset[b.dataset.theme]));
+      })
+    );
+    // Latest release facts (version, size, checksum) from GitHub; the page works without them.
+    fetch('https://api.github.com/repos/amrcs92/fakkerni-site/releases/latest')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((rel) => {
+        if (!rel) return;
+        const digits = (s) => false ? s.replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]) : s;
+        document.getElementById('rel-version').textContent = digits(rel.tag_name.replace(/^v/, ''));
+        const apk = (rel.assets || []).find((a) => a.name === 'fakkerni.apk');
+        if (apk) document.getElementById('rel-size').textContent = digits(String(Math.round(apk.size / 1048576))) + ' MB';
+        const m = /SHA-256[^:]*:\s*([a-f0-9]{64})/i.exec(rel.body || '');
+        if (m) {
+          document.getElementById('rel-sha').textContent = m[1];
+          document.getElementById('rel-sha-wrap').hidden = false;
+        }
+      })
+      .catch(() => {});
+  </script>
 </body>
 </html>
