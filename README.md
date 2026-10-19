@@ -11,5 +11,3 @@ Public home page and privacy policy for the Fakkerni Android app, served by GitH
 
 - Home: https://amrcs92.github.io/fakkerni-site/ · العربية: https://amrcs92.github.io/fakkerni-site/ar/
 - Privacy policy: https://amrcs92.github.io/fakkerni-site/privacy.html · العربية: https://amrcs92.github.io/fakkerni-site/ar/privacy.html
-
-The app's source code lives in a separate private repository.
