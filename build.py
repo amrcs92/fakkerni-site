@@ -9,6 +9,7 @@ import os
 ROOT = os.path.dirname(os.path.abspath(__file__))
 REPO = "amrcs92/fakkerni-site"
 DOWNLOAD = f"https://github.com/{REPO}/releases/latest/download/fakkerni.apk"
+RELEASES = f"https://github.com/{REPO}/releases"
 CONTACT = "amrcs1992@gmail.com"
 
 ICONS = {
@@ -95,6 +96,9 @@ T = {
         "contact": "Contact",
         "rights": "Fakkerni · فكّرني",
         "loading": "Latest",
+        "news_h": "What's new in",
+        "news_link": "What's new in",
+        "all_versions": "All versions and changes",
     },
     "ar": {
         "dir": "rtl",
@@ -160,6 +164,9 @@ T = {
         "contact": "للتواصل",
         "rights": "فكّرني · Fakkerni",
         "loading": "الأحدث",
+        "news_h": "الجديد في الإصدار",
+        "news_link": "الجديد في الإصدار",
+        "all_versions": "كل الإصدارات وتغييراتها",
     },
 }
 
@@ -247,6 +254,7 @@ def index(lang):
             <a class="btn btn-ghost" href="#screenshots">{t['cta2']}</a>
           </div>
           <p class="meta">{t['meta']}</p>
+          <p class="release-line"><a href="#whats-new">{t['news_link']} <span class="rel-v" dir="ltr">{t['loading']}</span></a><span aria-hidden="true">·</span><a href="{RELEASES}">{t['all_versions']}</a></p>
         </div>
         <div class="phones" aria-hidden="true">
           <div class="phone back"><img src="{prefix}assets/shots/{lang}-dark-medication.png" alt=""></div>
@@ -284,10 +292,15 @@ def index(lang):
             <p>{t['card_p']}</p>
             <a class="btn btn-primary" href="{DOWNLOAD}">{icon('download')}{t['cta']}</a>
             <dl class="facts">
-              <div><dt>{t['facts'][0]}</dt><dd id="rel-version">{t['loading']}</dd></div>
+              <div><dt>{t['facts'][0]}</dt><dd id="rel-version" dir="ltr">{t['loading']}</dd></div>
               <div><dt>{t['facts'][1]}</dt><dd id="rel-size">~60 MB</dd></div>
               <div><dt>{t['facts'][2]}</dt><dd>{t['requires']}</dd></div>
             </dl>
+            <div class="whats-new" id="whats-new" hidden>
+              <h4>{t['news_h']} <span class="rel-v" dir="ltr"></span></h4>
+              <ul id="rel-news"></ul>
+            </div>
+            <p class="all-versions"><a href="{RELEASES}">{t['all_versions']}</a></p>
             <p class="checksum" id="rel-sha-wrap" hidden>{t['checksum']}: <code id="rel-sha"></code></p>
           </div>
           <div>
@@ -333,10 +346,30 @@ def index(lang):
       .then((rel) => {{
         if (!rel) return;
         const digits = (s) => {'true' if lang == 'ar' else 'false'} ? s.replace(/\\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]) : s;
-        document.getElementById('rel-version').textContent = digits(rel.tag_name.replace(/^v/, ''));
+        // Version numbers stay in Latin digits: the Arabic zero looks like a dot (٠.١٠.٤).
+        const ver = rel.tag_name.replace(/^v/, '');
+        document.getElementById('rel-version').textContent = ver;
+        document.querySelectorAll('.rel-v').forEach((el) => (el.textContent = ver));
+        // What's new: release notes (docs/releases/<tag>.md in the app repo) hold English bullets,
+        // then a '### بالعربية' summary, then '---' and the checksum.
+        const body = (rel.body || '').split(/\\n---/)[0];
+        const parts = body.split(/^###\\s*بالعربية\\s*$/m);
+        const plain = (x) => x.replace(/\\*\\*|`/g, '').trim();
+        const items = {'true' if lang == 'ar' else 'false'}
+          ? (parts[1] || '').split(/\\n+|(?<=\\.)\\s+/).map(plain).filter(Boolean)
+          : parts[0].split('\\n').filter((l) => /^\\s*-\\s/.test(l)).map((l) => plain(l.replace(/^\\s*-\\s/, '')));
+        if (items.length) {{
+          const ul = document.getElementById('rel-news');
+          items.slice(0, 4).forEach((x) => {{
+            const li = document.createElement('li');
+            li.textContent = x;
+            ul.appendChild(li);
+          }});
+          document.getElementById('whats-new').hidden = false;
+        }}
         const apk = (rel.assets || []).find((a) => a.name === 'fakkerni.apk');
         if (apk) document.getElementById('rel-size').textContent = digits(String(Math.round(apk.size / 1048576))) + ' MB';
-        const m = /SHA-256[^:]*:\\s*([a-f0-9]{{64}})/i.exec(rel.body || '');
+        const m = /SHA-256[^:]*:\\s*`?([a-f0-9]{{64}})/i.exec(rel.body || '');
         if (m) {{
           document.getElementById('rel-sha').textContent = m[1];
           document.getElementById('rel-sha-wrap').hidden = false;

@@ -232,3 +232,13 @@ footer small { color: var(--ink3); width: 100%; }
   .privacy-band { padding: 28px 22px; }
   .topbar .btn-sm { display: none; }
 }
+
+/* Release line under the hero button, and What's new in the download card */
+.release-line { margin-top: 6px; font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px; color: var(--ink3); }
+.release-line a { color: var(--ink2); text-decoration: underline; text-underline-offset: 3px; }
+.whats-new { background: rgba(247, 245, 255, 0.08); border-radius: 16px; padding: 14px 16px; margin: 0 0 14px; }
+.whats-new h4 { margin: 0 0 8px; font-size: 15px; }
+.whats-new ul { margin: 0; padding-inline-start: 20px; color: var(--hero-ink2); font-size: 14px; line-height: 1.6; }
+.whats-new li + li { margin-top: 4px; }
+.download-card .all-versions { margin: 0 0 14px; font-size: 14px; }
+.download-card .all-versions a { color: var(--hero-ink); text-decoration: underline; text-underline-offset: 3px; }
