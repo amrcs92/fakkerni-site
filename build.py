@@ -177,6 +177,7 @@ def head(t, lang, prefix, title):
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="37A9ifyA773BNoFikE5AMEz3uKGSye-tLVznHpkyCa8">
   <title>{title}</title>
   <meta name="description" content="{t['desc']}">
   <meta property="og:title" content="{title}">
