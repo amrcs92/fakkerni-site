@@ -48,7 +48,7 @@ T = {
         "features_h": "Built to ring, every time",
         "features_p": "Reminders and medicines on alarms that keep working when the app is closed, the phone is asleep, or it has just restarted.",
         "features": [
-            ("bell", "Alarms that ring", "Full-screen alarms over the lock screen, snooze, early warnings and repeats from every few hours to every year."),
+            ("bell", "Alarms that ring", "Full-screen alarms over the lock screen, and over other apps while you use the phone, with snooze, early warnings and repeats from every few hours to every year."),
             ("speak", "Hear the title", "The reminder is spoken aloud in its own language, Arabic or English, once or every few seconds."),
             ("pill", "Medication made simple", "Each dose has its own alarm: taken, later or skipped. Stock tracking, refill alerts and a monthly history."),
             ("cloud", "Backups in your Drive", "Back up to a “Fakkerni backups” folder in your own Google Drive or a folder on your phone, with optional password encryption."),
@@ -70,7 +70,7 @@ T = {
         "steps": [
             ("Download the APK", "Tap Download on your Android phone. The file is called fakkerni.apk."),
             ("Allow the install", "Open the file. If Android asks, allow installing apps from your browser or file manager."),
-            ("Open Fakkerni", "Follow the short setup: language, notifications and alarm permissions. Already have a backup? Choose “I have a backup, restore”."),
+            ("Open Fakkerni", "Follow the short setup: language, notifications and alarm permissions. Allow “Show alarms over other apps” so alarms take the whole screen even while you use the phone. Already have a backup? Choose “I have a backup, restore”."),
         ],
         "note": "Google Play Protect may warn that the app comes from an unknown developer. That's because Fakkerni isn't on Google Play yet. Tap “More details” › “Install anyway”.",
         "privacy_h": "Private by design",
@@ -89,6 +89,7 @@ T = {
             ("Where are my backups?", "Wherever you choose: a “Fakkerni backups” folder in your own Google Drive, a folder on your phone, or inside the app. You can encrypt them with a password."),
             ("Why isn't it on Google Play?", "Fakkerni is still being tested. It will come to Google Play later; until then you can install the APK from this page."),
             ("Which phones are supported?", "Android 8.0 or later. Some brands limit apps in the background; Fakkerni's setup shows how to keep alarms on time on your phone."),
+            ("Why does an alarm show only as a banner?", "While you use your phone, Android shows alarms as a banner unless the app may display over other apps. Turn on Settings › Permissions › “Show alarms over other apps” in Fakkerni, and alarms take the whole screen."),
         ],
         "privacy": "Privacy policy",
         "contact": "Contact",
@@ -112,7 +113,7 @@ T = {
         "features_h": "صُمّم ليرنّ، في كل مرة",
         "features_p": "تذكيرات وأدوية على منبّهات تستمر بالعمل والتطبيق مغلق أو الهاتف في السكون أو بعد إعادة التشغيل.",
         "features": [
-            ("bell", "منبّهات ترنّ فعلاً", "منبّه بملء الشاشة فوق شاشة القفل، وغفوة وتنبيه مسبق، وتكرار من كل بضع ساعات إلى كل سنة."),
+            ("bell", "منبّهات ترنّ فعلاً", "منبّه بملء الشاشة فوق شاشة القفل، وفوق التطبيقات الأخرى أثناء استخدامك للهاتف، مع غفوة وتنبيه مسبق وتكرار من كل بضع ساعات إلى كل سنة."),
             ("speak", "اسمع العنوان", "يُنطق التذكير بصوت عالٍ بلغته، عربية أو إنجليزية، مرة واحدة أو كل بضع ثوانٍ."),
             ("pill", "الأدوية ببساطة", "لكل جرعة منبّهها الخاص: أخذتها أو لاحقاً أو تخطّيت. متابعة المخزون وتنبيهات إعادة التعبئة وسجل شهري."),
             ("cloud", "نسخ في Drive الخاص بك", "انسخ إلى مجلد «Fakkerni backups» في Google Drive الخاص بك أو إلى مجلد على هاتفك، مع تشفير اختياري بكلمة مرور."),
@@ -134,7 +135,7 @@ T = {
         "steps": [
             ("نزّل ملف APK", "اضغط «تنزيل» على هاتفك الأندرويد. اسم الملف fakkerni.apk."),
             ("اسمح بالتثبيت", "افتح الملف. إذا طلب أندرويد ذلك، اسمح بتثبيت التطبيقات من المتصفح أو مدير الملفات."),
-            ("افتح فكّرني", "اتبع الإعداد القصير: اللغة والإشعارات وأذونات المنبّه. لديك نسخة احتياطية؟ اختر «لديّ نسخة احتياطية، استعادة»."),
+            ("افتح فكّرني", "اتبع الإعداد القصير: اللغة والإشعارات وأذونات المنبّه. فعّل «عرض المنبّه فوق التطبيقات» ليظهر المنبّه بملء الشاشة حتى أثناء استخدامك للهاتف. لديك نسخة احتياطية؟ اختر «لديّ نسخة احتياطية، استعادة»."),
         ],
         "note": "قد يحذّرك Google Play Protect من أن التطبيق من مطوّر غير معروف، لأن فكّرني غير متاح على Google Play بعد. اضغط «مزيد من التفاصيل» ثم «التثبيت على أي حال».",
         "privacy_h": "الخصوصية من الأساس",
@@ -153,6 +154,7 @@ T = {
             ("أين تُحفظ نسخي الاحتياطية؟", "حيث تختار: مجلد «Fakkerni backups» في Google Drive الخاص بك، أو مجلد على هاتفك، أو داخل التطبيق. ويمكنك تشفيرها بكلمة مرور."),
             ("لماذا ليس على Google Play؟", "فكّرني ما زال قيد الاختبار وسيصل إلى Google Play لاحقاً؛ وحتى ذلك الحين يمكنك تثبيت ملف APK من هذه الصفحة."),
             ("ما الهواتف المدعومة؟", "أندرويد ٨ أو أحدث. بعض الشركات تقيّد التطبيقات في الخلفية، ويوضّح إعداد فكّرني كيف تُبقي المنبّهات في موعدها على هاتفك."),
+            ("لماذا يظهر المنبّه كإشعار فقط؟", "أثناء استخدامك للهاتف، يعرض أندرويد المنبّهات كإشعار ما لم يُسمح للتطبيق بالظهور فوق التطبيقات الأخرى. فعّل في فكّرني: الإعدادات › الأذونات › «عرض المنبّه فوق التطبيقات»، ليظهر المنبّه بملء الشاشة."),
         ],
         "privacy": "سياسة الخصوصية",
         "contact": "للتواصل",
