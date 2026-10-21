@@ -21,6 +21,8 @@ ICONS = {
     "globe": '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/>',
     "check": '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
     "download": '<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',
+    "sun": '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/>',
+    "moon": '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
 }
 
 
@@ -99,6 +101,7 @@ T = {
         "news_h": "What's new in",
         "news_link": "What's new in",
         "all_versions": "All versions and changes",
+        "theme": "Switch light or dark",
     },
     "ar": {
         "dir": "rtl",
@@ -167,6 +170,7 @@ T = {
         "news_h": "الجديد في الإصدار",
         "news_link": "الجديد في الإصدار",
         "all_versions": "كل الإصدارات وتغييراتها",
+        "theme": "التبديل بين الفاتح والداكن",
     },
 }
 
@@ -188,6 +192,7 @@ def head(t, lang, prefix, title):
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{prefix}style.css">
+  <script>try {{ const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; }} catch (e) {{}}</script>
 </head>
 <body>
 """
@@ -205,6 +210,7 @@ def topbar(t, lang, prefix, home, other_href, anchors=True):
       {logo}
       <nav class="links" aria-label="Sections">{links}</nav>
       <a class="lang-switch" href="{other_href}" hreflang="{'ar' if lang == 'en' else 'en'}">{t['other_lang']}</a>
+      <button type="button" class="theme-toggle" aria-label="{t['theme']}" title="{t['theme']}"><span class="sun">{icon('sun')}</span><span class="moon">{icon('moon')}</span></button>
       <a class="btn btn-primary btn-sm" href="{DOWNLOAD}">{icon('download')}{t['download']}</a>
     </div>
   </header>
@@ -222,6 +228,19 @@ def footer(t, lang, prefix, home, privacy):
       </nav>
     </div>
   </footer>
+  <script>
+    // Light / dark switch: starts from the phone's setting, remembers the visitor's choice.
+    const isDark = () =>
+      document.documentElement.dataset.theme
+        ? document.documentElement.dataset.theme === 'dark'
+        : matchMedia('(prefers-color-scheme: dark)').matches;
+    document.querySelector('.theme-toggle').addEventListener('click', () => {{
+      const next = isDark() ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try {{ localStorage.setItem('theme', next); }} catch (e) {{}}
+      document.dispatchEvent(new CustomEvent('themechange', {{ detail: next }}));
+    }});
+  </script>
 """
 
 
@@ -334,13 +353,14 @@ def index(lang):
   </main>
 """ + footer(t, lang, prefix, "./", "privacy.html") + f"""
   <script>
-    // Screenshot theme switch.
-    document.querySelectorAll('.seg button').forEach((b) =>
-      b.addEventListener('click', () => {{
-        document.querySelectorAll('.seg button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-        document.querySelectorAll('.gallery img').forEach((img) => (img.src = img.dataset[b.dataset.theme]));
-      }})
-    );
+    // Screenshot theme switch; it follows the page theme and can be changed on its own.
+    const showShots = (theme) => {{
+      document.querySelectorAll('.seg button').forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.theme === theme)));
+      document.querySelectorAll('.gallery img').forEach((img) => (img.src = img.dataset[theme]));
+    }};
+    document.querySelectorAll('.seg button').forEach((b) => b.addEventListener('click', () => showShots(b.dataset.theme)));
+    if (isDark()) showShots('dark');
+    document.addEventListener('themechange', (e) => showShots(e.detail));
     // Latest release facts (version, size, checksum) from GitHub; the page works without them.
     fetch('https://api.github.com/repos/{REPO}/releases/latest')
       .then((r) => (r.ok ? r.json() : null))
