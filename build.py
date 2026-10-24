@@ -192,7 +192,9 @@ def head(t, lang, prefix, title):
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{prefix}style.css">
-  <script>try {{ const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; }} catch (e) {{}}</script>
+  <script>try {{ const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; }} catch (e) {{}}
+    // Scroll reveals hide content until it is in view, so only when motion is welcome and the browser can tell.
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');</script>
 </head>
 <body>
 """
@@ -249,18 +251,18 @@ def index(lang):
     prefix = "../" if lang == "ar" else ""
     other = "../" if lang == "ar" else "ar/"
     shots = lambda theme: "".join(
-        f'<figure><div class="phone"><img loading="lazy" src="{prefix}assets/shots/{lang}-{theme}-{k}.png" '
+        f'<figure data-reveal><div class="phone"><img loading="lazy" src="{prefix}assets/shots/{lang}-{theme}-{k}.png" '
         f'data-light="{prefix}assets/shots/{lang}-light-{k}.png" data-dark="{prefix}assets/shots/{lang}-dark-{k}.png" '
         f'alt="{name}"></div><figcaption>{name}</figcaption></figure>'
         for k, name in t["shots"]
     )
     features = "".join(
-        f'<div class="feature"><div class="icon">{icon(i)}</div><h3>{h}</h3><p>{p}</p></div>' for i, h, p in t["features"]
+        f'<div class="feature" data-reveal><div class="icon">{icon(i)}</div><h3>{h}</h3><p>{p}</p></div>' for i, h, p in t["features"]
     )
     trust = "".join(f"<li>{icon('check')}{x}</li>" for x in t["trust"])
-    steps = "".join(f"<li><h4>{h}</h4><p>{p}</p></li>" for h, p in t["steps"])
-    checks = "".join(f"<li>{icon('check')}<span>{x}</span></li>" for x in t["checks"])
-    faq = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in t["faq"])
+    steps = "".join(f"<li data-reveal><h4>{h}</h4><p>{p}</p></li>" for h, p in t["steps"])
+    checks = "".join(f"<li data-reveal>{icon('check')}<span>{x}</span></li>" for x in t["checks"])
+    faq = "".join(f"<details data-reveal><summary>{q}</summary><p>{a}</p></details>" for q, a in t["faq"])
     html = head(t, lang, prefix, t["title"]) + topbar(t, lang, prefix, "./", other) + f"""
   <main>
     <section class="hero">
@@ -287,15 +289,15 @@ def index(lang):
 
     <section class="block" id="features">
       <div class="container">
-        <div class="section-head"><h2>{t['features_h']}</h2><p>{t['features_p']}</p></div>
+        <div class="section-head" data-reveal><h2>{t['features_h']}</h2><p>{t['features_p']}</p></div>
         <div class="features">{features}</div>
       </div>
     </section>
 
     <section class="block" id="screenshots" style="background: var(--bg2)">
       <div class="container">
-        <div class="section-head"><h2>{t['gallery_h']}</h2><p>{t['gallery_p']}</p></div>
-        <div class="gallery-bar"><div class="seg" role="group">
+        <div class="section-head" data-reveal><h2>{t['gallery_h']}</h2><p>{t['gallery_p']}</p></div>
+        <div class="gallery-bar" data-reveal><div class="seg" role="group">
           <button type="button" data-theme="light" aria-pressed="true">{t['light']}</button>
           <button type="button" data-theme="dark" aria-pressed="false">{t['dark']}</button>
         </div></div>
@@ -305,9 +307,9 @@ def index(lang):
 
     <section class="block" id="install">
       <div class="container">
-        <div class="section-head"><h2>{t['install_h']}</h2><p>{t['install_p']}</p></div>
+        <div class="section-head" data-reveal><h2>{t['install_h']}</h2><p>{t['install_p']}</p></div>
         <div class="install">
-          <div class="download-card">
+          <div class="download-card" data-reveal>
             <h3>{t['card_h']}</h3>
             <p>{t['card_p']}</p>
             <a class="btn btn-primary" href="{DOWNLOAD}">{icon('download')}{t['cta']}</a>
@@ -325,7 +327,7 @@ def index(lang):
           </div>
           <div>
             <ol class="steps">{steps}</ol>
-            <p class="note">{t['note']}</p>
+            <p class="note" data-reveal>{t['note']}</p>
           </div>
         </div>
       </div>
@@ -333,7 +335,7 @@ def index(lang):
 
     <section class="block" id="privacy">
       <div class="container">
-        <div class="privacy-band">
+        <div class="privacy-band" data-reveal>
           <div>
             <h2>{t['privacy_h']}</h2>
             <p>{t['privacy_p']}</p>
@@ -346,7 +348,7 @@ def index(lang):
 
     <section class="block" style="padding-top: 0">
       <div class="container">
-        <div class="section-head"><h2>{t['faq_h']}</h2></div>
+        <div class="section-head" data-reveal><h2>{t['faq_h']}</h2></div>
         <div class="faq">{faq}</div>
       </div>
     </section>
@@ -397,6 +399,21 @@ def index(lang):
         }}
       }})
       .catch(() => {{}});
+  </script>
+  <script>
+    // Scroll reveal: each item fades up once when it enters the view; items arriving together are staggered.
+    if (document.documentElement.classList.contains('motion')) {{
+      const io = new IntersectionObserver((entries) => {{
+        let n = 0;
+        entries.forEach((e) => {{
+          if (!e.isIntersecting) return;
+          e.target.style.setProperty('--i', Math.min(n++, 5));
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }});
+      }}, {{ rootMargin: '0px 0px -8% 0px', threshold: 0.12 }});
+      document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+    }}
   </script>
 </body>
 </html>
