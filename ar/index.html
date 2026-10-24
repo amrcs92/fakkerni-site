@@ -14,7 +14,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
-  <script>try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <script>try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+    // Scroll reveals hide content until it is in view, so only when motion is welcome and the browser can tell.
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');</script>
 </head>
 <body>
   <header class="topbar">
@@ -52,27 +54,27 @@
 
     <section class="block" id="features">
       <div class="container">
-        <div class="section-head"><h2>صُمّم ليرنّ، في كل مرة</h2><p>تذكيرات وأدوية على منبّهات تستمر بالعمل والتطبيق مغلق أو الهاتف في السكون أو بعد إعادة التشغيل.</p></div>
-        <div class="features"><div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></div><h3>منبّهات ترنّ فعلاً</h3><p>منبّه بملء الشاشة فوق شاشة القفل، وفوق التطبيقات الأخرى أثناء استخدامك للهاتف، مع غفوة وتنبيه مسبق وتكرار من كل بضع ساعات إلى كل سنة.</p></div><div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19.5 6.3 16A7.5 7.5 0 1 1 9 18.6z"/><path d="M9.5 10.5v2M12 9v5M14.5 10.5v2"/></svg></div><h3>اسمع العنوان</h3><p>يُنطق التذكير بصوت عالٍ بلغته، عربية أو إنجليزية، مرة واحدة أو كل بضع ثوانٍ.</p></div><div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8.5" width="17" height="7" rx="3.5" transform="rotate(-45 12 12)"/><path d="m9.2 9.2 5.6 5.6"/></svg></div><h3>الأدوية ببساطة</h3><p>لكل جرعة منبّهها الخاص: أخذتها أو لاحقاً أو تخطّيت. متابعة المخزون وتنبيهات إعادة التعبئة وسجل شهري.</p></div><div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18.5h10.5a4 4 0 0 0 .5-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 18.5z"/><path d="m9.5 14 2 2 3.5-3.5"/></svg></div><h3>نسخ في Drive الخاص بك</h3><p>انسخ إلى مجلد «Fakkerni backups» في Google Drive الخاص بك أو إلى مجلد على هاتفك، مع تشفير اختياري بكلمة مرور.</p></div><div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v8"/><path d="M6.3 7.3a8 8 0 1 0 11.4 0"/></svg></div><h3>موثوق بعد إعادة التشغيل</h3><p>ترنّ المنبّهات حتى بعد إعادة تشغيل الهاتف وقبل فتح القفل، وينبّهك فكّرني إن أخّرته أنظمة توفير البطارية.</p></div><div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></div><h3>العربية أولاً</h3><p>واجهة من اليمين لليسار، وأرقام وجمع عربي صحيح، وأسبوع يبدأ بالسبت، ومظهر فاتح وداكن.</p></div></div>
+        <div class="section-head" data-reveal><h2>صُمّم ليرنّ، في كل مرة</h2><p>تذكيرات وأدوية على منبّهات تستمر بالعمل والتطبيق مغلق أو الهاتف في السكون أو بعد إعادة التشغيل.</p></div>
+        <div class="features"><div class="feature" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></div><h3>منبّهات ترنّ فعلاً</h3><p>منبّه بملء الشاشة فوق شاشة القفل، وفوق التطبيقات الأخرى أثناء استخدامك للهاتف، مع غفوة وتنبيه مسبق وتكرار من كل بضع ساعات إلى كل سنة.</p></div><div class="feature" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19.5 6.3 16A7.5 7.5 0 1 1 9 18.6z"/><path d="M9.5 10.5v2M12 9v5M14.5 10.5v2"/></svg></div><h3>اسمع العنوان</h3><p>يُنطق التذكير بصوت عالٍ بلغته، عربية أو إنجليزية، مرة واحدة أو كل بضع ثوانٍ.</p></div><div class="feature" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8.5" width="17" height="7" rx="3.5" transform="rotate(-45 12 12)"/><path d="m9.2 9.2 5.6 5.6"/></svg></div><h3>الأدوية ببساطة</h3><p>لكل جرعة منبّهها الخاص: أخذتها أو لاحقاً أو تخطّيت. متابعة المخزون وتنبيهات إعادة التعبئة وسجل شهري.</p></div><div class="feature" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18.5h10.5a4 4 0 0 0 .5-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 18.5z"/><path d="m9.5 14 2 2 3.5-3.5"/></svg></div><h3>نسخ في Drive الخاص بك</h3><p>انسخ إلى مجلد «Fakkerni backups» في Google Drive الخاص بك أو إلى مجلد على هاتفك، مع تشفير اختياري بكلمة مرور.</p></div><div class="feature" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v8"/><path d="M6.3 7.3a8 8 0 1 0 11.4 0"/></svg></div><h3>موثوق بعد إعادة التشغيل</h3><p>ترنّ المنبّهات حتى بعد إعادة تشغيل الهاتف وقبل فتح القفل، وينبّهك فكّرني إن أخّرته أنظمة توفير البطارية.</p></div><div class="feature" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></div><h3>العربية أولاً</h3><p>واجهة من اليمين لليسار، وأرقام وجمع عربي صحيح، وأسبوع يبدأ بالسبت، ومظهر فاتح وداكن.</p></div></div>
       </div>
     </section>
 
     <section class="block" id="screenshots" style="background: var(--bg2)">
       <div class="container">
-        <div class="section-head"><h2>نظرة أقرب</h2><p>خمس شاشات رئيسية، بالمظهر الفاتح والداكن.</p></div>
-        <div class="gallery-bar"><div class="seg" role="group">
+        <div class="section-head" data-reveal><h2>نظرة أقرب</h2><p>خمس شاشات رئيسية، بالمظهر الفاتح والداكن.</p></div>
+        <div class="gallery-bar" data-reveal><div class="seg" role="group">
           <button type="button" data-theme="light" aria-pressed="true">فاتح</button>
           <button type="button" data-theme="dark" aria-pressed="false">داكن</button>
         </div></div>
-        <div class="gallery"><figure><div class="phone"><img loading="lazy" src="../assets/shots/ar-light-home.png" data-light="../assets/shots/ar-light-home.png" data-dark="../assets/shots/ar-dark-home.png" alt="التذكيرات"></div><figcaption>التذكيرات</figcaption></figure><figure><div class="phone"><img loading="lazy" src="../assets/shots/ar-light-edit.png" data-light="../assets/shots/ar-light-edit.png" data-dark="../assets/shots/ar-dark-edit.png" alt="تعديل التذكير"></div><figcaption>تعديل التذكير</figcaption></figure><figure><div class="phone"><img loading="lazy" src="../assets/shots/ar-light-medication.png" data-light="../assets/shots/ar-light-medication.png" data-dark="../assets/shots/ar-dark-medication.png" alt="الأدوية"></div><figcaption>الأدوية</figcaption></figure><figure><div class="phone"><img loading="lazy" src="../assets/shots/ar-light-settings.png" data-light="../assets/shots/ar-light-settings.png" data-dark="../assets/shots/ar-dark-settings.png" alt="الإعدادات"></div><figcaption>الإعدادات</figcaption></figure><figure><div class="phone"><img loading="lazy" src="../assets/shots/ar-light-backup.png" data-light="../assets/shots/ar-light-backup.png" data-dark="../assets/shots/ar-dark-backup.png" alt="النسخ الاحتياطي"></div><figcaption>النسخ الاحتياطي</figcaption></figure></div>
+        <div class="gallery"><figure data-reveal><div class="phone"><img loading="lazy" src="../assets/shots/ar-light-home.png" data-light="../assets/shots/ar-light-home.png" data-dark="../assets/shots/ar-dark-home.png" alt="التذكيرات"></div><figcaption>التذكيرات</figcaption></figure><figure data-reveal><div class="phone"><img loading="lazy" src="../assets/shots/ar-light-edit.png" data-light="../assets/shots/ar-light-edit.png" data-dark="../assets/shots/ar-dark-edit.png" alt="تعديل التذكير"></div><figcaption>تعديل التذكير</figcaption></figure><figure data-reveal><div class="phone"><img loading="lazy" src="../assets/shots/ar-light-medication.png" data-light="../assets/shots/ar-light-medication.png" data-dark="../assets/shots/ar-dark-medication.png" alt="الأدوية"></div><figcaption>الأدوية</figcaption></figure><figure data-reveal><div class="phone"><img loading="lazy" src="../assets/shots/ar-light-settings.png" data-light="../assets/shots/ar-light-settings.png" data-dark="../assets/shots/ar-dark-settings.png" alt="الإعدادات"></div><figcaption>الإعدادات</figcaption></figure><figure data-reveal><div class="phone"><img loading="lazy" src="../assets/shots/ar-light-backup.png" data-light="../assets/shots/ar-light-backup.png" data-dark="../assets/shots/ar-dark-backup.png" alt="النسخ الاحتياطي"></div><figcaption>النسخ الاحتياطي</figcaption></figure></div>
       </div>
     </section>
 
     <section class="block" id="install">
       <div class="container">
-        <div class="section-head"><h2>ثبّته في دقيقة</h2><p>فكّرني غير متاح على Google Play بعد. نزّل ملف APK وثبّته مباشرة.</p></div>
+        <div class="section-head" data-reveal><h2>ثبّته في دقيقة</h2><p>فكّرني غير متاح على Google Play بعد. نزّل ملف APK وثبّته مباشرة.</p></div>
         <div class="install">
-          <div class="download-card">
+          <div class="download-card" data-reveal>
             <h3>فكّرني لأندرويد</h3>
             <p>أحدث إصدار، جاهز للتثبيت.</p>
             <a class="btn btn-primary" href="https://github.com/amrcs92/fakkerni-site/releases/latest/download/fakkerni.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>نزّل لأندرويد</a>
@@ -89,8 +91,8 @@
             <p class="checksum" id="rel-sha-wrap" hidden>SHA-256: <code id="rel-sha"></code></p>
           </div>
           <div>
-            <ol class="steps"><li><h4>نزّل ملف APK</h4><p>اضغط «تنزيل» على هاتفك الأندرويد. اسم الملف fakkerni.apk.</p></li><li><h4>اسمح بالتثبيت</h4><p>افتح الملف. إذا طلب أندرويد ذلك، اسمح بتثبيت التطبيقات من المتصفح أو مدير الملفات.</p></li><li><h4>افتح فكّرني</h4><p>اتبع الإعداد القصير: اللغة والإشعارات وأذونات المنبّه. فعّل «عرض المنبّه فوق التطبيقات» ليظهر المنبّه بملء الشاشة حتى أثناء استخدامك للهاتف. لديك نسخة احتياطية؟ اختر «لديّ نسخة احتياطية، استعادة».</p></li></ol>
-            <p class="note">قد يحذّرك Google Play Protect من أن التطبيق من مطوّر غير معروف، لأن فكّرني غير متاح على Google Play بعد. اضغط «مزيد من التفاصيل» ثم «التثبيت على أي حال».</p>
+            <ol class="steps"><li data-reveal><h4>نزّل ملف APK</h4><p>اضغط «تنزيل» على هاتفك الأندرويد. اسم الملف fakkerni.apk.</p></li><li data-reveal><h4>اسمح بالتثبيت</h4><p>افتح الملف. إذا طلب أندرويد ذلك، اسمح بتثبيت التطبيقات من المتصفح أو مدير الملفات.</p></li><li data-reveal><h4>افتح فكّرني</h4><p>اتبع الإعداد القصير: اللغة والإشعارات وأذونات المنبّه. فعّل «عرض المنبّه فوق التطبيقات» ليظهر المنبّه بملء الشاشة حتى أثناء استخدامك للهاتف. لديك نسخة احتياطية؟ اختر «لديّ نسخة احتياطية، استعادة».</p></li></ol>
+            <p class="note" data-reveal>قد يحذّرك Google Play Protect من أن التطبيق من مطوّر غير معروف، لأن فكّرني غير متاح على Google Play بعد. اضغط «مزيد من التفاصيل» ثم «التثبيت على أي حال».</p>
           </div>
         </div>
       </div>
@@ -98,21 +100,21 @@
 
     <section class="block" id="privacy">
       <div class="container">
-        <div class="privacy-band">
+        <div class="privacy-band" data-reveal>
           <div>
             <h2>الخصوصية من الأساس</h2>
             <p>تذكيراتك وأدويتك شأن شخصي. يحفظها فكّرني على هاتفك، ولا تذهب النسخة الاحتياطية إلا إلى المكان الذي تختاره.</p>
             <a class="btn btn-ghost" href="privacy.html">اقرأ سياسة الخصوصية</a>
           </div>
-          <ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>بلا حساب ولا تسجيل</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>بلا خوادم ولا تحليلات ولا إعلانات</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>تبقى بياناتك على هاتفك</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>نسخ اختيارية إلى Google Drive الخاص بك أو مجلد، مشفّرة إن أردت</span></li></ul>
+          <ul class="checks"><li data-reveal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>بلا حساب ولا تسجيل</span></li><li data-reveal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>بلا خوادم ولا تحليلات ولا إعلانات</span></li><li data-reveal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>تبقى بياناتك على هاتفك</span></li><li data-reveal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>نسخ اختيارية إلى Google Drive الخاص بك أو مجلد، مشفّرة إن أردت</span></li></ul>
         </div>
       </div>
     </section>
 
     <section class="block" style="padding-top: 0">
       <div class="container">
-        <div class="section-head"><h2>أسئلة شائعة</h2></div>
-        <div class="faq"><details><summary>هل فكّرني مجاني؟</summary><p>نعم. بلا إعلانات ولا اشتراكات ولا مشتريات داخل التطبيق.</p></details><details><summary>هل يعمل دون إنترنت؟</summary><p>نعم. تعمل المنبّهات والتذكيرات والأدوية دون إنترنت بالكامل. يُستخدم الإنترنت فقط عند النسخ إلى Google Drive.</p></details><details><summary>أين تُحفظ نسخي الاحتياطية؟</summary><p>حيث تختار: مجلد «Fakkerni backups» في Google Drive الخاص بك، أو مجلد على هاتفك، أو داخل التطبيق. ويمكنك تشفيرها بكلمة مرور.</p></details><details><summary>لماذا ليس على Google Play؟</summary><p>فكّرني ما زال قيد الاختبار وسيصل إلى Google Play لاحقاً؛ وحتى ذلك الحين يمكنك تثبيت ملف APK من هذه الصفحة.</p></details><details><summary>ما الهواتف المدعومة؟</summary><p>أندرويد ٨ أو أحدث. بعض الشركات تقيّد التطبيقات في الخلفية، ويوضّح إعداد فكّرني كيف تُبقي المنبّهات في موعدها على هاتفك.</p></details><details><summary>لماذا يظهر المنبّه كإشعار فقط؟</summary><p>أثناء استخدامك للهاتف، يعرض أندرويد المنبّهات كإشعار ما لم يُسمح للتطبيق بالظهور فوق التطبيقات الأخرى. فعّل في فكّرني: الإعدادات › الأذونات › «عرض المنبّه فوق التطبيقات»، ليظهر المنبّه بملء الشاشة.</p></details></div>
+        <div class="section-head" data-reveal><h2>أسئلة شائعة</h2></div>
+        <div class="faq"><details data-reveal><summary>هل فكّرني مجاني؟</summary><p>نعم. بلا إعلانات ولا اشتراكات ولا مشتريات داخل التطبيق.</p></details><details data-reveal><summary>هل يعمل دون إنترنت؟</summary><p>نعم. تعمل المنبّهات والتذكيرات والأدوية دون إنترنت بالكامل. يُستخدم الإنترنت فقط عند النسخ إلى Google Drive.</p></details><details data-reveal><summary>أين تُحفظ نسخي الاحتياطية؟</summary><p>حيث تختار: مجلد «Fakkerni backups» في Google Drive الخاص بك، أو مجلد على هاتفك، أو داخل التطبيق. ويمكنك تشفيرها بكلمة مرور.</p></details><details data-reveal><summary>لماذا ليس على Google Play؟</summary><p>فكّرني ما زال قيد الاختبار وسيصل إلى Google Play لاحقاً؛ وحتى ذلك الحين يمكنك تثبيت ملف APK من هذه الصفحة.</p></details><details data-reveal><summary>ما الهواتف المدعومة؟</summary><p>أندرويد ٨ أو أحدث. بعض الشركات تقيّد التطبيقات في الخلفية، ويوضّح إعداد فكّرني كيف تُبقي المنبّهات في موعدها على هاتفك.</p></details><details data-reveal><summary>لماذا يظهر المنبّه كإشعار فقط؟</summary><p>أثناء استخدامك للهاتف، يعرض أندرويد المنبّهات كإشعار ما لم يُسمح للتطبيق بالظهور فوق التطبيقات الأخرى. فعّل في فكّرني: الإعدادات › الأذونات › «عرض المنبّه فوق التطبيقات»، ليظهر المنبّه بملء الشاشة.</p></details></div>
       </div>
     </section>
   </main>
@@ -185,6 +187,21 @@
         }
       })
       .catch(() => {});
+  </script>
+  <script>
+    // Scroll reveal: each item fades up once when it enters the view; items arriving together are staggered.
+    if (document.documentElement.classList.contains('motion')) {
+      const io = new IntersectionObserver((entries) => {
+        let n = 0;
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.style.setProperty('--i', Math.min(n++, 5));
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+      document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+    }
   </script>
 </body>
 </html>

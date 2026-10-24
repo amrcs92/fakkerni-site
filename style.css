@@ -17,6 +17,23 @@
   --hero-ink2: #c9c6ea;
   --shadow: 0 24px 60px -20px rgba(30, 27, 75, 0.35);
   --radius: 24px;
+  --glow-a: rgba(94, 211, 180, 0.5);
+  --glow-b: rgba(185, 180, 255, 0.65);
+  --card-shadow: 0 22px 44px -26px rgba(30, 27, 75, 0.4);
+  --line-hover: color-mix(in srgb, var(--mint) 55%, var(--line));
+  /* Motion: one ease for things arriving, one for slow loops. Distances drop to 0 under reduce motion. */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-loop: cubic-bezier(0.37, 0, 0.63, 1);
+  --t-press: 120ms;
+  --t-hover: 220ms;
+  --t-reveal: 700ms;
+  --t-enter: 800ms;
+  --lift-sm: -2px;
+  --lift: -4px;
+  --lift-lg: -6px;
+  --nudge: 4px;
+  --pop: 1.08;
+  --press: 0.98;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -33,6 +50,9 @@
     --mint-ink: #5ed3b4;
     --hero: #18172f;
     --shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.8);
+    --glow-a: rgba(94, 211, 180, 0.3);
+    --glow-b: rgba(124, 112, 255, 0.45);
+    --card-shadow: 0 22px 44px -22px rgba(0, 0, 0, 0.75);
   }
 }
 :root[data-theme='dark'] {
@@ -48,6 +68,9 @@
   --mint-ink: #5ed3b4;
   --hero: #18172f;
   --shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.8);
+  --glow-a: rgba(94, 211, 180, 0.3);
+  --glow-b: rgba(124, 112, 255, 0.45);
+  --card-shadow: 0 22px 44px -22px rgba(0, 0, 0, 0.75);
 }
 :root[data-theme='light'] { color-scheme: light; }
 :root[data-theme='dark'] { color-scheme: dark; }
@@ -107,9 +130,7 @@ a { color: inherit; }
 .btn {
   display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
   font-weight: 700; border-radius: 999px; padding: 12px 22px; font-size: 15px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.btn:hover { transform: translateY(-1px); }
 .btn-primary { background: var(--primary); color: var(--on-primary); box-shadow: var(--shadow); }
 .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
 .btn-sm { padding: 8px 16px; font-size: 14px; box-shadow: none; }
@@ -276,3 +297,102 @@ footer small { color: var(--ink3); width: 100%; }
 .whats-new li + li { margin-top: 4px; }
 .download-card .all-versions { margin: 0 0 14px; font-size: 14px; }
 .download-card .all-versions a { color: var(--hero-ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── Motion ──────────────────────────────────────────── */
+/* Hover and press states run on every device; anything that travels or loops sits behind
+   prefers-reduced-motion. Entrances and reveals move on `translate`, hover on `transform`,
+   so the two never fight (and the back phone keeps its tilt). */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  :root { --lift-sm: 0px; --lift: 0px; --lift-lg: 0px; --nudge: 0px; --pop: 1; --press: 1; }
+}
+
+/* Soft glow behind the phones (drawn for the light and dark themes, mirrored for RTL) */
+.phones { isolation: isolate; }
+.phones::before {
+  content: ''; position: absolute; z-index: -1; inset-block: -6% -8%; inset-inline: -8% -14%;
+  background:
+    radial-gradient(closest-side at 40% 42%, var(--glow-a), transparent),
+    radial-gradient(closest-side at 66% 62%, var(--glow-b), transparent);
+  filter: blur(48px); pointer-events: none;
+}
+[dir='rtl'] .phones::before { transform: scaleX(-1); }
+.eyebrow .dot { position: relative; }
+.eyebrow .dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--mint); opacity: 0; }
+
+/* Hover, focus and press */
+.btn, .feature, .steps li, .gallery .phone {
+  transition:
+    transform var(--t-hover) var(--ease-out), box-shadow var(--t-hover) var(--ease-out),
+    border-color var(--t-hover) var(--ease-out), background-color var(--t-hover) var(--ease-out),
+    scale var(--t-press) var(--ease-out);
+}
+.btn svg, .feature .icon, .checks svg { transition: translate var(--t-hover) var(--ease-out), scale var(--t-hover) var(--ease-out), background-color var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out); }
+.steps li::before, .seg button, .faq details, .checks li, .lang-switch, .theme-toggle, .links a, footer a {
+  transition: background-color var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out), border-color var(--t-hover) var(--ease-out);
+}
+:where(a, button, summary):focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(var(--lift-sm)); }
+  .btn-primary:hover { box-shadow: 0 28px 60px -18px rgba(30, 27, 75, 0.45); }
+  .btn:hover svg { translate: 0 2px; }
+  .btn-ghost:hover { border-color: var(--line-hover); background-color: var(--surface); }
+  .lang-switch:hover, .theme-toggle:hover { border-color: var(--line-hover); color: var(--ink); }
+
+  .feature:hover { transform: translateY(var(--lift)); box-shadow: var(--card-shadow); border-color: var(--line-hover); }
+  .feature:hover .icon { background-color: color-mix(in srgb, var(--mint) 24%, var(--bg2)); color: var(--mint-ink); scale: var(--pop); }
+
+  .gallery figure:hover .phone { transform: translateY(var(--lift-lg)); }
+  .seg button:not([aria-pressed='true']):hover { color: var(--ink); }
+
+  .steps li:hover { transform: translateX(var(--nudge)); border-color: var(--line-hover); }
+  [dir='rtl'] .steps li:hover { transform: translateX(calc(var(--nudge) * -1)); }
+  .steps li:hover::before { background-color: var(--mint); color: #1e1b4b; }
+
+  .checks li:hover { color: var(--ink); }
+  .checks li:hover svg { scale: var(--pop); }
+  .faq details:hover { border-color: var(--line-hover); }
+}
+/* Phones and tablets: no hover, so a short press instead */
+@media (hover: none) {
+  .btn:active, .feature:active, .steps li:active, .gallery .phone:active { scale: var(--press); }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  /* Hero entrance: text rises in 80ms apart, then the phones; the glow breathes and the phones float */
+  .hero .eyebrow, .hero h1, .hero .lead, .hero .cta, .hero .meta, .hero .release-line, .trust ul {
+    animation: rise var(--t-enter) var(--ease-out) var(--d, 0ms) both;
+  }
+  .hero .eyebrow { --d: 100ms; }
+  .hero h1 { --d: 180ms; }
+  .hero .lead { --d: 260ms; }
+  .hero .cta { --d: 340ms; }
+  .hero .meta { --d: 420ms; }
+  .hero .release-line { --d: 460ms; }
+  .trust ul { --d: 560ms; }
+  .eyebrow .dot::after { animation: ping 2.4s var(--ease-out) 1.2s infinite; }
+  .phones::before { animation: glow-in 1400ms var(--ease-out) 200ms both, breathe 8s var(--ease-loop) 1600ms infinite alternate; }
+  .phone.front {
+    --rise: 28px; --float: -10px;
+    animation: rise-phone 1000ms var(--ease-out) 300ms both, float 6s var(--ease-loop) 1300ms infinite alternate;
+  }
+  .phone.back {
+    --rise: 40px; --float: -7px;
+    animation: rise-phone 1000ms var(--ease-out) 450ms both, float 7.5s var(--ease-loop) 1450ms infinite alternate;
+  }
+
+  /* Scroll reveal: items fade up once; items arriving together are staggered 70ms apart (see the page script) */
+  .motion [data-reveal]:not(.is-in) { opacity: 0; }
+  .motion [data-reveal].is-in { animation: reveal var(--t-reveal) var(--ease-out) calc(var(--i, 0) * 70ms) both; }
+
+  .faq details[open] p { animation: faq-open 320ms var(--ease-out); }
+}
+@keyframes rise { from { opacity: 0; translate: 0 14px; } }
+@keyframes rise-phone { from { opacity: 0; translate: 0 var(--rise); } }
+@keyframes float { from { translate: 0 0; } to { translate: 0 var(--float); } }
+@keyframes glow-in { from { opacity: 0; scale: 0.9; } }
+@keyframes breathe { from { opacity: 1; scale: 1; } to { opacity: 0.7; scale: 1.05; } }
+@keyframes ping { 0% { opacity: 0.6; scale: 1; } 80%, 100% { opacity: 0; scale: 3; } }
+@keyframes reveal { from { opacity: 0; translate: 0 18px; } }
+@keyframes faq-open { from { opacity: 0; translate: 0 -4px; } }
