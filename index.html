@@ -134,40 +134,41 @@
       document.documentElement.dataset.theme
         ? document.documentElement.dataset.theme === 'dark'
         : matchMedia('(prefers-color-scheme: dark)').matches;
-    const toggle = document.querySelector('.theme-toggle');
-    toggle.addEventListener('click', () => {
+    // Smooth swaps: the page cross-fades from its old look to its new one (View Transitions, see style.css).
+    // Images that are on screen and about to change are fetched first, so they never flash.
+    // Reduce motion swaps at once; browsers without View Transitions fade only the colours.
+    const fadeSwap = async (update, theme) => {
+      const onScreen = (el) => {
+        const b = el.getBoundingClientRect();
+        return b.bottom > 0 && b.top < innerHeight && b.right > 0 && b.left < innerWidth;
+      };
+      const loads = [...document.querySelectorAll('img[data-light]')].filter(onScreen).map((img) => {
+        const next = new Image();
+        next.src = img.dataset[theme];
+        return next.decode().catch(() => {});
+      });
+      await Promise.race([Promise.all(loads), new Promise((done) => setTimeout(done, 400))]);
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return update();
+      if (!document.startViewTransition) {
+        document.documentElement.classList.add('theme-fade');
+        update();
+        await new Promise((done) => setTimeout(done, 400));
+        document.documentElement.classList.remove('theme-fade');
+        return;
+      }
+      const swap = document.startViewTransition(update);
+      swap.ready.catch(() => {}); // a skipped transition still swaps; nothing to report
+      return swap.finished;
+    };
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
       const root = document.documentElement;
       const next = isDark() ? 'light' : 'dark';
-      const apply = () => {
+      root.classList.add('theme-switching'); // lets the sun and moon morph (style.css)
+      fadeSwap(() => {
         root.dataset.theme = next;
         try { localStorage.setItem('theme', next); } catch (e) {}
         document.dispatchEvent(new CustomEvent('themechange', { detail: next }));
-      };
-      root.classList.add('theme-switched');
-      // The new theme grows out of the switch as a circle; without View Transitions the colours fade;
-      // with reduce motion it swaps at once.
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return apply();
-      if (!document.startViewTransition) {
-        root.classList.add('theme-fade');
-        apply();
-        setTimeout(() => root.classList.remove('theme-fade'), 400);
-        return;
-      }
-      const r = toggle.getBoundingClientRect();
-      const x = r.left + r.width / 2, y = r.top + r.height / 2;
-      root.style.setProperty('--tx', x + 'px');
-      root.style.setProperty('--ty', y + 'px');
-      root.style.setProperty('--tr', Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + 'px');
-      document.startViewTransition(() => {
-        apply();
-        // Let on-screen screenshots decode so they arrive with the new theme, but never hold the switch long.
-        const onScreen = (el) => {
-          const b = el.getBoundingClientRect();
-          return b.bottom > 0 && b.top < innerHeight && b.right > 0 && b.left < innerWidth;
-        };
-        const imgs = [...document.querySelectorAll('.gallery img')].filter(onScreen).map((img) => img.decode().catch(() => {}));
-        return Promise.race([Promise.all(imgs), new Promise((done) => setTimeout(done, 250))]);
-      }).ready.catch(() => {}); // a skipped transition still switches the theme; nothing to report
+      }, next).finally(() => root.classList.remove('theme-switching'));
     });
   </script>
 
@@ -177,7 +178,9 @@
       document.querySelectorAll('.seg button').forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.theme === theme)));
       document.querySelectorAll('.gallery img').forEach((img) => (img.src = img.dataset[theme]));
     };
-    document.querySelectorAll('.seg button').forEach((b) => b.addEventListener('click', () => showShots(b.dataset.theme)));
+    document.querySelectorAll('.seg button').forEach((b) =>
+      b.addEventListener('click', () => fadeSwap(() => showShots(b.dataset.theme), b.dataset.theme)),
+    );
     if (isDark()) showShots('dark');
     document.addEventListener('themechange', (e) => showShots(e.detail));
     // Latest release facts (version, size, checksum) from GitHub; the page works without them.
