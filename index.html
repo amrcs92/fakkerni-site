@@ -134,11 +134,40 @@
       document.documentElement.dataset.theme
         ? document.documentElement.dataset.theme === 'dark'
         : matchMedia('(prefers-color-scheme: dark)').matches;
-    document.querySelector('.theme-toggle').addEventListener('click', () => {
+    const toggle = document.querySelector('.theme-toggle');
+    toggle.addEventListener('click', () => {
+      const root = document.documentElement;
       const next = isDark() ? 'light' : 'dark';
-      document.documentElement.dataset.theme = next;
-      try { localStorage.setItem('theme', next); } catch (e) {}
-      document.dispatchEvent(new CustomEvent('themechange', { detail: next }));
+      const apply = () => {
+        root.dataset.theme = next;
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        document.dispatchEvent(new CustomEvent('themechange', { detail: next }));
+      };
+      root.classList.add('theme-switched');
+      // The new theme grows out of the switch as a circle; without View Transitions the colours fade;
+      // with reduce motion it swaps at once.
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return apply();
+      if (!document.startViewTransition) {
+        root.classList.add('theme-fade');
+        apply();
+        setTimeout(() => root.classList.remove('theme-fade'), 400);
+        return;
+      }
+      const r = toggle.getBoundingClientRect();
+      const x = r.left + r.width / 2, y = r.top + r.height / 2;
+      root.style.setProperty('--tx', x + 'px');
+      root.style.setProperty('--ty', y + 'px');
+      root.style.setProperty('--tr', Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + 'px');
+      document.startViewTransition(() => {
+        apply();
+        // Let on-screen screenshots decode so they arrive with the new theme, but never hold the switch long.
+        const onScreen = (el) => {
+          const b = el.getBoundingClientRect();
+          return b.bottom > 0 && b.top < innerHeight && b.right > 0 && b.left < innerWidth;
+        };
+        const imgs = [...document.querySelectorAll('.gallery img')].filter(onScreen).map((img) => img.decode().catch(() => {}));
+        return Promise.race([Promise.all(imgs), new Promise((done) => setTimeout(done, 250))]);
+      }).ready.catch(() => {}); // a skipped transition still switches the theme; nothing to report
     });
   </script>
 
