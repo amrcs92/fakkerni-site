@@ -25,7 +25,7 @@
       <nav class="links" aria-label="Sections"><a href="#features">Features</a><a href="#screenshots">Screenshots</a><a href="#install">Install</a><a href="#privacy">Privacy</a></nav>
       <a class="lang-switch" href="ar/" hreflang="ar">العربية</a>
       <button type="button" class="theme-toggle" aria-label="Switch light or dark" title="Switch light or dark"><span class="sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg></span><span class="moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></span></button>
-      <a class="btn btn-primary btn-sm" href="https://github.com/amrcs92/fakkerni-site/releases/latest/download/fakkerni.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download</a>
+      <a class="btn btn-primary btn-sm" href="https://play.google.com/store/apps/details?id=com.amrcs92.fakkerni&amp;hl=en"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download</a>
     </div>
   </header>
 
@@ -33,14 +33,14 @@
     <section class="hero">
       <div class="container">
         <div>
-          <span class="eyebrow"><span class="dot"></span>Free for Android · In testing</span>
+          <span class="eyebrow"><span class="dot"></span>Free on Google Play</span>
           <h1>Everything that matters, on time</h1>
           <p class="lead">Fakkerni (<bdi>فكّرني</bdi>, “remind me”) rings your reminders and medicine doses on time, even offline and right after a restart. Made Arabic first, with full English.</p>
           <div class="cta">
-            <a class="btn btn-primary" href="https://github.com/amrcs92/fakkerni-site/releases/latest/download/fakkerni.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download for Android</a>
+            <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.amrcs92.fakkerni&amp;hl=en"><img src="assets/google-play-en.png" alt="Get it on Google Play" width="564" height="168"></a>
             <a class="btn btn-ghost" href="#screenshots">See screenshots</a>
           </div>
-          <p class="meta">Android 8.0 or later · Free · About 60 MB</p>
+          <p class="meta">Android 8.0 or later · Free · No ads</p>
           <p class="release-line"><a href="#whats-new">What's new in <span class="rel-v" dir="ltr">Latest</span></a><span aria-hidden="true">·</span><a href="https://github.com/amrcs92/fakkerni-site/releases">All versions and changes</a></p>
         </div>
         <div class="phones" aria-hidden="true">
@@ -72,12 +72,16 @@
 
     <section class="block" id="install">
       <div class="container">
-        <div class="section-head" data-reveal><h2>Install in a minute</h2><p>Fakkerni isn't on Google Play yet. Download the APK and install it directly.</p></div>
+        <div class="section-head" data-reveal><h2>Get Fakkerni</h2><p>Install it from Google Play and it keeps itself up to date. The APK is here too, for phones without Google Play.</p></div>
         <div class="install">
           <div class="download-card" data-reveal>
-            <h3>Fakkerni for Android</h3>
-            <p>The latest version, ready to install.</p>
-            <a class="btn btn-primary" href="https://github.com/amrcs92/fakkerni-site/releases/latest/download/fakkerni.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download for Android</a>
+            <h3>Fakkerni on Google Play</h3>
+            <p>One tap to install, and new versions arrive by themselves.</p>
+            <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.amrcs92.fakkerni&amp;hl=en"><img src="assets/google-play-en.png" alt="Get it on Google Play" width="564" height="168"></a>
+            <div class="apk-alt">
+            <h4>Or install the APK directly</h4>
+            <p>The same app as a file, for phones without Google Play.</p>
+            <a class="btn btn-apk" href="https://github.com/amrcs92/fakkerni-site/releases/latest/download/fakkerni.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download the APK</a>
             <dl class="facts">
               <div><dt>Version</dt><dd id="rel-version" dir="ltr">Latest</dd></div>
               <div><dt>Size</dt><dd id="rel-size">~60 MB</dd></div>
@@ -89,10 +93,12 @@
             </div>
             <p class="all-versions"><a href="https://github.com/amrcs92/fakkerni-site/releases">All versions and changes</a></p>
             <p class="checksum" id="rel-sha-wrap" hidden>SHA-256: <code id="rel-sha"></code></p>
+            </div>
           </div>
           <div>
-            <ol class="steps"><li data-reveal><h4>Download the APK</h4><p>Tap Download on your Android phone. The file is called fakkerni.apk.</p></li><li data-reveal><h4>Allow the install</h4><p>Open the file. If Android asks, allow installing apps from your browser or file manager.</p></li><li data-reveal><h4>Open Fakkerni</h4><p>Follow the short setup: language, notifications and alarm permissions. Allow “Show alarms over other apps” so alarms take the whole screen even while you use the phone. Already have a backup? Choose “I have a backup, restore”.</p></li></ol>
-            <p class="note" data-reveal>Google Play Protect may warn that the app comes from an unknown developer. That's because Fakkerni isn't on Google Play yet. Tap “More details” › “Install anyway”.</p>
+            <h3 class="steps-h" data-reveal>Moving from the APK to Google Play?</h3>
+            <ol class="steps"><li data-reveal><h4>Back up first</h4><p>In Fakkerni, open Settings › Backup, choose Google Drive or Folder on this device, and tap “Back up now”. A backup kept inside the app is removed with it.</p></li><li data-reveal><h4>Uninstall the APK version</h4><p>The two versions are signed differently, so Android can't update one with the other.</p></li><li data-reveal><h4>Install from Google Play and restore</h4><p>Open Fakkerni and choose “I have a backup, restore” during setup. Your reminders, medicines and history come back.</p></li></ol>
+            <p class="note" data-reveal>Installing the APK? Android may ask you to allow installs from your browser, and Play Protect may warn about an unknown developer: tap “More details” › “Install anyway”.</p>
           </div>
         </div>
       </div>
@@ -114,7 +120,7 @@
     <section class="block" style="padding-top: 0">
       <div class="container">
         <div class="section-head" data-reveal><h2>Questions</h2></div>
-        <div class="faq"><details data-reveal><summary>Is Fakkerni free?</summary><p>Yes. No ads, no subscriptions and no in-app purchases.</p></details><details data-reveal><summary>Does it work without internet?</summary><p>Yes. Alarms, reminders and medication work fully offline. Internet is only used if you back up to Google Drive.</p></details><details data-reveal><summary>Where are my backups?</summary><p>Wherever you choose: a “Fakkerni backups” folder in your own Google Drive, a folder on your phone, or inside the app. You can encrypt them with a password.</p></details><details data-reveal><summary>Why isn't it on Google Play?</summary><p>Fakkerni is still being tested. It will come to Google Play later; until then you can install the APK from this page.</p></details><details data-reveal><summary>Which phones are supported?</summary><p>Android 8.0 or later. Some brands limit apps in the background; Fakkerni's setup shows how to keep alarms on time on your phone.</p></details><details data-reveal><summary>Why does an alarm show only as a banner?</summary><p>While you use your phone, Android shows alarms as a banner unless the app may display over other apps. Turn on Settings › Permissions › “Show alarms over other apps” in Fakkerni, and alarms take the whole screen.</p></details></div>
+        <div class="faq"><details data-reveal><summary>Is Fakkerni free?</summary><p>Yes. No ads, no subscriptions and no in-app purchases.</p></details><details data-reveal><summary>Does it work without internet?</summary><p>Yes. Alarms, reminders and medication work fully offline. Internet is only used if you back up to Google Drive.</p></details><details data-reveal><summary>Where are my backups?</summary><p>Wherever you choose: a “Fakkerni backups” folder in your own Google Drive, a folder on your phone, or inside the app. You can encrypt them with a password.</p></details><details data-reveal><summary>Google Play or the APK?</summary><p>Google Play, if your phone has it: it installs in one tap and keeps Fakkerni up to date. The APK is the same app for phones without Google Play. Moving from the APK to Google Play? Back up first, as shown under Install.</p></details><details data-reveal><summary>Which phones are supported?</summary><p>Android 8.0 or later. Some brands limit apps in the background; Fakkerni's setup shows how to keep alarms on time on your phone.</p></details><details data-reveal><summary>Why does an alarm show only as a banner?</summary><p>While you use your phone, Android shows alarms as a banner unless the app may display over other apps. Turn on Settings › Permissions › “Show alarms over other apps” in Fakkerni, and alarms take the whole screen.</p></details></div>
       </div>
     </section>
   </main>
@@ -124,7 +130,7 @@
       <nav>
         <a href="privacy.html">Privacy policy</a>
         <a href="mailto:amrcs1992@gmail.com">Contact: amrcs1992@gmail.com</a>
-        <a href="https://github.com/amrcs92/fakkerni-site/releases/latest/download/fakkerni.apk">Download</a>
+        <a href="https://play.google.com/store/apps/details?id=com.amrcs92.fakkerni&amp;hl=en">Google Play</a>
       </nav>
     </div>
   </footer>
