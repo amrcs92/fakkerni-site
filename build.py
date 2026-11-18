@@ -10,6 +10,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 REPO = "amrcs92/fakkerni-site"
 DOWNLOAD = f"https://github.com/{REPO}/releases/latest/download/fakkerni.apk"
 RELEASES = f"https://github.com/{REPO}/releases"
+PLAY = "https://play.google.com/store/apps/details?id=com.amrcs92.fakkerni"
 CONTACT = "amrcs1992@gmail.com"
 
 ICONS = {
@@ -41,12 +42,13 @@ T = {
         "nav": ["Features", "Screenshots", "Install", "Privacy"],
         "other_lang": "العربية",
         "download": "Download",
-        "eyebrow": "Free for Android · In testing",
+        "eyebrow": "Free on Google Play",
         "h1": "Everything that matters, on time",
         "lead": "Fakkerni (<bdi>فكّرني</bdi>, “remind me”) rings your reminders and medicine doses on time, even offline and right after a restart. Made Arabic first, with full English.",
-        "cta": "Download for Android",
+        "cta": "Download the APK",
+        "play_alt": "Get it on Google Play",
         "cta2": "See screenshots",
-        "meta": "Android 8.0 or later · Free · About 60 MB",
+        "meta": "Android 8.0 or later · Free · No ads",
         "trust": ["No account", "No ads", "No tracking", "Works offline", "Arabic and English"],
         "features_h": "Built to ring, every time",
         "features_p": "Reminders and medicines on alarms that keep working when the app is closed, the phone is asleep, or it has just restarted.",
@@ -63,19 +65,22 @@ T = {
         "light": "Light",
         "dark": "Dark",
         "shots": [("home", "Reminders"), ("alarm", "Alarm: snooze up to 6 hours"), ("voice", "Choose the speaking voice"), ("several-alarms", "Several alarms at once"), ("done-today", "Done today"), ("history", "History"), ("history-sheet", "History entry"), ("edit", "Edit reminder"), ("completed", "Completed reminder"), ("medication", "Medication"), ("settings", "Settings"), ("clear-history", "Clear history"), ("backup", "Backup")],
-        "install_h": "Install in a minute",
-        "install_p": "Fakkerni isn't on Google Play yet. Download the APK and install it directly.",
-        "card_h": "Fakkerni for Android",
-        "card_p": "The latest version, ready to install.",
+        "install_h": "Get Fakkerni",
+        "install_p": "Install it from Google Play and it keeps itself up to date. The APK is here too, for phones without Google Play.",
+        "card_h": "Fakkerni on Google Play",
+        "card_p": "One tap to install, and new versions arrive by themselves.",
+        "apk_h": "Or install the APK directly",
+        "apk_p": "The same app as a file, for phones without Google Play.",
+        "steps_h": "Moving from the APK to Google Play?",
         "facts": ["Version", "Size", "Requires"],
         "requires": "Android 8.0+",
         "checksum": "SHA-256",
         "steps": [
-            ("Download the APK", "Tap Download on your Android phone. The file is called fakkerni.apk."),
-            ("Allow the install", "Open the file. If Android asks, allow installing apps from your browser or file manager."),
-            ("Open Fakkerni", "Follow the short setup: language, notifications and alarm permissions. Allow “Show alarms over other apps” so alarms take the whole screen even while you use the phone. Already have a backup? Choose “I have a backup, restore”."),
+            ("Back up first", "In Fakkerni, open Settings › Backup, choose Google Drive or Folder on this device, and tap “Back up now”. A backup kept inside the app is removed with it."),
+            ("Uninstall the APK version", "The two versions are signed differently, so Android can't update one with the other."),
+            ("Install from Google Play and restore", "Open Fakkerni and choose “I have a backup, restore” during setup. Your reminders, medicines and history come back."),
         ],
-        "note": "Google Play Protect may warn that the app comes from an unknown developer. That's because Fakkerni isn't on Google Play yet. Tap “More details” › “Install anyway”.",
+        "note": "Installing the APK? Android may ask you to allow installs from your browser, and Play Protect may warn about an unknown developer: tap “More details” › “Install anyway”.",
         "privacy_h": "Private by design",
         "privacy_p": "Your reminders and medicines are personal. Fakkerni keeps them on your phone, and a backup goes only where you choose.",
         "privacy_link": "Read the privacy policy",
@@ -90,7 +95,7 @@ T = {
             ("Is Fakkerni free?", "Yes. No ads, no subscriptions and no in-app purchases."),
             ("Does it work without internet?", "Yes. Alarms, reminders and medication work fully offline. Internet is only used if you back up to Google Drive."),
             ("Where are my backups?", "Wherever you choose: a “Fakkerni backups” folder in your own Google Drive, a folder on your phone, or inside the app. You can encrypt them with a password."),
-            ("Why isn't it on Google Play?", "Fakkerni is still being tested. It will come to Google Play later; until then you can install the APK from this page."),
+            ("Google Play or the APK?", "Google Play, if your phone has it: it installs in one tap and keeps Fakkerni up to date. The APK is the same app for phones without Google Play. Moving from the APK to Google Play? Back up first, as shown under Install."),
             ("Which phones are supported?", "Android 8.0 or later. Some brands limit apps in the background; Fakkerni's setup shows how to keep alarms on time on your phone."),
             ("Why does an alarm show only as a banner?", "While you use your phone, Android shows alarms as a banner unless the app may display over other apps. Turn on Settings › Permissions › “Show alarms over other apps” in Fakkerni, and alarms take the whole screen."),
         ],
@@ -110,12 +115,13 @@ T = {
         "nav": ["المزايا", "لقطات الشاشة", "التثبيت", "الخصوصية"],
         "other_lang": "English",
         "download": "تنزيل",
-        "eyebrow": "مجاني لأندرويد · قيد الاختبار",
+        "eyebrow": "مجاني على Google Play",
         "h1": "كل ما يهمّك، في موعده",
         "lead": "يرنّ فكّرني بتذكيراتك وجرعات أدويتك في موعدها، حتى دون إنترنت وبعد إعادة تشغيل الهاتف مباشرة. صُمّم بالعربية أولاً مع دعم كامل للإنجليزية.",
-        "cta": "نزّل لأندرويد",
+        "cta": "نزّل ملف APK",
+        "play_alt": "احصل عليه من Google Play",
         "cta2": "شاهد لقطات الشاشة",
-        "meta": "أندرويد ٨ أو أحدث · مجاني · نحو ٦٠ ميغابايت",
+        "meta": "أندرويد ٨ أو أحدث · مجاني · بلا إعلانات",
         "trust": ["بلا حساب", "بلا إعلانات", "بلا تتبّع", "يعمل دون إنترنت", "عربي وإنجليزي"],
         "features_h": "صُمّم ليرنّ، في كل مرة",
         "features_p": "تذكيرات وأدوية على منبّهات تستمر بالعمل والتطبيق مغلق أو الهاتف في السكون أو بعد إعادة التشغيل.",
@@ -132,19 +138,22 @@ T = {
         "light": "فاتح",
         "dark": "داكن",
         "shots": [("home", "التذكيرات"), ("alarm", "المنبّه: غفوة حتى ٦ ساعات"), ("voice", "اختر صوت النطق"), ("several-alarms", "عدة تنبيهات معاً"), ("done-today", "تم اليوم"), ("history", "السجل"), ("history-sheet", "إدخال في السجل"), ("edit", "تعديل التذكير"), ("completed", "تذكير مكتمل"), ("medication", "الأدوية"), ("settings", "الإعدادات"), ("clear-history", "مسح السجل"), ("backup", "النسخ الاحتياطي")],
-        "install_h": "ثبّته في دقيقة",
-        "install_p": "فكّرني غير متاح على Google Play بعد. نزّل ملف APK وثبّته مباشرة.",
-        "card_h": "فكّرني لأندرويد",
-        "card_p": "أحدث إصدار، جاهز للتثبيت.",
+        "install_h": "احصل على فكّرني",
+        "install_p": "ثبّته من Google Play فيبقى محدّثاً تلقائياً. ملف APK متاح هنا أيضاً للهواتف التي لا يوجد بها Google Play.",
+        "card_h": "فكّرني على Google Play",
+        "card_p": "التثبيت بضغطة واحدة، والإصدارات الجديدة تصلك تلقائياً.",
+        "apk_h": "أو ثبّت ملف APK مباشرة",
+        "apk_p": "التطبيق نفسه كملف، للهواتف التي لا يوجد بها Google Play.",
+        "steps_h": "تنتقل من نسخة APK إلى Google Play؟",
         "facts": ["الإصدار", "الحجم", "يتطلّب"],
         "requires": "أندرويد ٨+",
         "checksum": "SHA-256",
         "steps": [
-            ("نزّل ملف APK", "اضغط «تنزيل» على هاتفك الأندرويد. اسم الملف fakkerni.apk."),
-            ("اسمح بالتثبيت", "افتح الملف. إذا طلب أندرويد ذلك، اسمح بتثبيت التطبيقات من المتصفح أو مدير الملفات."),
-            ("افتح فكّرني", "اتبع الإعداد القصير: اللغة والإشعارات وأذونات المنبّه. فعّل «عرض المنبّه فوق التطبيقات» ليظهر المنبّه بملء الشاشة حتى أثناء استخدامك للهاتف. لديك نسخة احتياطية؟ اختر «لديّ نسخة احتياطية، استعادة»."),
+            ("انسخ بياناتك أولاً", "في فكّرني افتح الإعدادات › النسخ الاحتياطي، واختر Google Drive أو «مجلد على الجهاز»، ثم اضغط «انسخ الآن». النسخة المحفوظة داخل التطبيق تُحذف معه."),
+            ("احذف نسخة APK", "النسختان موقّعتان بشكل مختلف، لذلك لا يستطيع أندرويد تحديث إحداهما بالأخرى."),
+            ("ثبّته من Google Play واستعد بياناتك", "افتح فكّرني واختر «لديّ نسخة احتياطية، استعادة» أثناء الإعداد، فتعود تذكيراتك وأدويتك وسجلّك."),
         ],
-        "note": "قد يحذّرك Google Play Protect من أن التطبيق من مطوّر غير معروف، لأن فكّرني غير متاح على Google Play بعد. اضغط «مزيد من التفاصيل» ثم «التثبيت على أي حال».",
+        "note": "تثبّت ملف APK؟ قد يطلب أندرويد السماح بالتثبيت من المتصفح، وقد يحذّرك Play Protect من مطوّر غير معروف: اضغط «مزيد من التفاصيل» ثم «التثبيت على أي حال».",
         "privacy_h": "الخصوصية من الأساس",
         "privacy_p": "تذكيراتك وأدويتك شأن شخصي. يحفظها فكّرني على هاتفك، ولا تذهب النسخة الاحتياطية إلا إلى المكان الذي تختاره.",
         "privacy_link": "اقرأ سياسة الخصوصية",
@@ -159,7 +168,7 @@ T = {
             ("هل فكّرني مجاني؟", "نعم. بلا إعلانات ولا اشتراكات ولا مشتريات داخل التطبيق."),
             ("هل يعمل دون إنترنت؟", "نعم. تعمل المنبّهات والتذكيرات والأدوية دون إنترنت بالكامل. يُستخدم الإنترنت فقط عند النسخ إلى Google Drive."),
             ("أين تُحفظ نسخي الاحتياطية؟", "حيث تختار: مجلد «Fakkerni backups» في Google Drive الخاص بك، أو مجلد على هاتفك، أو داخل التطبيق. ويمكنك تشفيرها بكلمة مرور."),
-            ("لماذا ليس على Google Play؟", "فكّرني ما زال قيد الاختبار وسيصل إلى Google Play لاحقاً؛ وحتى ذلك الحين يمكنك تثبيت ملف APK من هذه الصفحة."),
+            ("Google Play أم ملف APK؟", "Google Play إن كان على هاتفك: التثبيت بضغطة واحدة ويبقى فكّرني محدّثاً. ملف APK هو التطبيق نفسه للهواتف التي لا يوجد بها Google Play. تنتقل من APK إلى Google Play؟ انسخ بياناتك أولاً كما في قسم التثبيت."),
             ("ما الهواتف المدعومة؟", "أندرويد ٨ أو أحدث. بعض الشركات تقيّد التطبيقات في الخلفية، ويوضّح إعداد فكّرني كيف تُبقي المنبّهات في موعدها على هاتفك."),
             ("لماذا يظهر المنبّه كإشعار فقط؟", "أثناء استخدامك للهاتف، يعرض أندرويد المنبّهات كإشعار ما لم يُسمح للتطبيق بالظهور فوق التطبيقات الأخرى. فعّل في فكّرني: الإعدادات › الأذونات › «عرض المنبّه فوق التطبيقات»، ليظهر المنبّه بملء الشاشة."),
         ],
@@ -213,7 +222,7 @@ def topbar(t, lang, prefix, home, other_href, anchors=True):
       <nav class="links" aria-label="Sections">{links}</nav>
       <a class="lang-switch" href="{other_href}" hreflang="{'ar' if lang == 'en' else 'en'}">{t['other_lang']}</a>
       <button type="button" class="theme-toggle" aria-label="{t['theme']}" title="{t['theme']}"><span class="sun">{icon('sun')}</span><span class="moon">{icon('moon')}</span></button>
-      <a class="btn btn-primary btn-sm" href="{DOWNLOAD}">{icon('download')}{t['download']}</a>
+      <a class="btn btn-primary btn-sm" href="{PLAY}&amp;hl={lang}">{icon('download')}{t['download']}</a>
     </div>
   </header>
 """
@@ -226,7 +235,7 @@ def footer(t, lang, prefix, home, privacy):
       <nav>
         <a href="{privacy}">{t['privacy']}</a>
         <a href="mailto:{CONTACT}">{t['contact']}: {CONTACT}</a>
-        <a href="{DOWNLOAD}">{t['download']}</a>
+        <a href="{PLAY}&amp;hl={lang}">Google Play</a>
       </nav>
     </div>
   </footer>
@@ -292,6 +301,10 @@ def index(lang):
     trust = "".join(f"<li>{icon('check')}{x}</li>" for x in t["trust"])
     steps = "".join(f"<li data-reveal><h4>{h}</h4><p>{p}</p></li>" for h, p in t["steps"])
     checks = "".join(f"<li data-reveal>{icon('check')}<span>{x}</span></li>" for x in t["checks"])
+    play_badge = (
+        f'<a class="play-badge" href="{PLAY}&amp;hl={lang}"><img src="{prefix}assets/google-play-{lang}.png" '
+        f'alt="{t["play_alt"]}" width="564" height="168"></a>'
+    )
     faq = "".join(f"<details data-reveal><summary>{q}</summary><p>{a}</p></details>" for q, a in t["faq"])
     html = head(t, lang, prefix, t["title"]) + topbar(t, lang, prefix, "./", other) + f"""
   <main>
@@ -302,7 +315,7 @@ def index(lang):
           <h1>{t['h1']}</h1>
           <p class="lead">{t['lead']}</p>
           <div class="cta">
-            <a class="btn btn-primary" href="{DOWNLOAD}">{icon('download')}{t['cta']}</a>
+            {play_badge}
             <a class="btn btn-ghost" href="#screenshots">{t['cta2']}</a>
           </div>
           <p class="meta">{t['meta']}</p>
@@ -342,7 +355,11 @@ def index(lang):
           <div class="download-card" data-reveal>
             <h3>{t['card_h']}</h3>
             <p>{t['card_p']}</p>
-            <a class="btn btn-primary" href="{DOWNLOAD}">{icon('download')}{t['cta']}</a>
+            {play_badge}
+            <div class="apk-alt">
+            <h4>{t['apk_h']}</h4>
+            <p>{t['apk_p']}</p>
+            <a class="btn btn-apk" href="{DOWNLOAD}">{icon('download')}{t['cta']}</a>
             <dl class="facts">
               <div><dt>{t['facts'][0]}</dt><dd id="rel-version" dir="ltr">{t['loading']}</dd></div>
               <div><dt>{t['facts'][1]}</dt><dd id="rel-size">~60 MB</dd></div>
@@ -354,8 +371,10 @@ def index(lang):
             </div>
             <p class="all-versions"><a href="{RELEASES}">{t['all_versions']}</a></p>
             <p class="checksum" id="rel-sha-wrap" hidden>{t['checksum']}: <code id="rel-sha"></code></p>
+            </div>
           </div>
           <div>
+            <h3 class="steps-h" data-reveal>{t['steps_h']}</h3>
             <ol class="steps">{steps}</ol>
             <p class="note" data-reveal>{t['note']}</p>
           </div>
